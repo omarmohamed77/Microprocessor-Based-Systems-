@@ -77,5 +77,5 @@ void PORT_INT(uint8 port_index)
 		GPIO_PORTD_PCTL_R &= (~0xFFFFFFFF);
 		GPIO_PORTD_AFSEL_R &= (~0xFFFFFFFF);
 		GPIO_PORTD_DEN_R |= 0xFFFFFFFF;
-	}
+  }
 }
