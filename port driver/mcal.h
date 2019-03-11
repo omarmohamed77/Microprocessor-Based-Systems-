@@ -13,5 +13,4 @@
 #include "common macros.h"
 void PORT_INT(uint8 port_index);
 
-
 #endif /* MCAL_H_ */
