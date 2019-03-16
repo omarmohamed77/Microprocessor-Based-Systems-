@@ -1,4 +1,5 @@
 #include "tm4c123gh6pm.h"
+#include "std_types.h"
 
 #define GPIO_PF321_M				0x0EU 	//Pins 3, 2, and 1 are connected to RGB LED
 #define GPIO_PF4_M					0x10U		// Pin 4 is connected to switch
@@ -6,10 +7,11 @@
 #define GPIO_PF2_M					0x04U		// Pin 2 is connected to blue
 #define GPIO_PF1_M					0x02U		// Pin 1 is connected to red
 #define GPIO_PCTL_PF321_M		(GPIO_PCTL_PF3_M | GPIO_PCTL_PF2_M | GPIO_PCTL_PF1_M) // To combine masks, OR them together
+typedef volatile unsigned long       vuint32;  /* 0 to 4,294,967,295*/
 
 void RGBLED_Init(void);
 void SW1_Init(void);
-unsigned char SW1_Input(void);
+uint8 SW1_Input(void);
 void RGB_Output(unsigned char out);
 
 void SystemInit(void){
@@ -18,8 +20,8 @@ void SystemInit(void){
 }
 
 int main(void){
-	unsigned char in;
-	unsigned char led_out = GPIO_PF1_M; // Initalize LED to be red when button pressed first time
+	uint8 in;
+	uint8 led_out = GPIO_PF1_M; // Initalize LED to be red when button pressed first time
 	for(;;){
 		if(led_out == GPIO_PF4_M){
 			led_out = GPIO_PF1_M; // Reset led_out to red after green
@@ -33,7 +35,7 @@ int main(void){
 }
 
 void RGBLED_Init(void){
-	volatile unsigned long delay;
+	vuint32 delay;
   SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R5;  // PortF clock enable
   delay = SYSCTL_RCGCGPIO_R;        				// Delay   
   GPIO_PORTF_LOCK_R = GPIO_LOCK_KEY;   			// Unlock PortF Commit register  
@@ -47,7 +49,7 @@ void RGBLED_Init(void){
 }
 
 void SW1_Init(void){
-	volatile unsigned long delay;
+	vuint32 delay;
   SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R5;  
   delay = SYSCTL_RCGCGPIO_R;        				
   GPIO_PORTF_LOCK_R = GPIO_LOCK_KEY;   			  
@@ -60,11 +62,11 @@ void SW1_Init(void){
   GPIO_PORTF_DEN_R |= GPIO_PF4_M;			
 }
 
-unsigned char SW1_Input(void){
+uint8 SW1_Input(void){
 	return GPIO_PORTF_DATA_R&GPIO_PF4_M;
 }
 
-void RGB_Output(unsigned char out){
+void RGB_Output(uint8 out){
 	GPIO_PORTF_DATA_R &= ~GPIO_PF321_M; // reset all to off
 	GPIO_PORTF_DATA_R |= out;
 }
