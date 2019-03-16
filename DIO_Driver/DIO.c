@@ -2,7 +2,7 @@
 
 uint8 DIO_ReadPort(uint8 port_index, uint8 pins_mask)
 {
-    uint8 pins_level;
+    volatile uint32 *PORT = GPIO_PORTA_DATA_BITS_R + ((port_index & 0x03) << 12) + ((port_index >> 2) << 17);
 
-    return pins_level;
+    return PORT[pins_mask];
 }

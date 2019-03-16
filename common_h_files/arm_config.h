@@ -9,5 +9,4 @@
 #define ARM_CONFIG_H_
 #include "tm4c123gh6pm.h"
 
-
 #endif /* ARM_CONFIG_H_ */
