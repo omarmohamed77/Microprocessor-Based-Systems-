@@ -1,6 +1,6 @@
 
 #include"mcal.h"
-void Port_SetPinDirection(uint8 port_index, uint8 pins_mask, Port_PinDirectionType pins_direction){
+void Port_SetPinDirection(uint8 port_index, uint8 pins_mask,enum Port_PinDirectionType pins_direction){
 	uint32 Port_reg;
 	switch(port_index){
 		case 0://case port A
