@@ -1,6 +1,6 @@
 
-#include"Port_SetPinDirection.h"
-void Port_SetPinDirection(uint8 port_index, uint8 pins_mask, Port_PinDirectionType pins_direction){
+#include"mcal.h"
+void Port_SetPinDirection(uint8 port_index, uint8 pins_mask,enum Port_PinDirectionType pins_direction){
 	uint32 Port_reg;
 	switch(port_index){
 		case 0://case port A
@@ -8,7 +8,7 @@ void Port_SetPinDirection(uint8 port_index, uint8 pins_mask, Port_PinDirectionTy
 			if (pins_direction) {//when the mask want to set bit
 			GPIO_PORTA_DIR_R |= pins_mask;
 		}
-		else {{// when want to clear bit
+		else {// when want to clear bit
 			GPIO_PORTA_DIR_R &= (~(pins_mask));
 		}
 	     break;
