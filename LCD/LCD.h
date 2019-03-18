@@ -15,8 +15,16 @@
 #include "delay.h"
 
 void LCD_init();
-//write a command to LCD
+   /**
+   * This method is used to send a command to LCD 1602A
+   * @param command This is the command that will be sent to the LCD
+   * @return void
+   */
 void LCD_command(char command);
-//write data to LCD
+   /**
+   * This method is used to send data to LCD 1602A
+   * @param data This is the data in ASCII that will be sent to the LCD
+   * @return void
+   */
 void LCD_data(char data);
 #endif

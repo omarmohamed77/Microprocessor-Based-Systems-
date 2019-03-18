@@ -1,4 +1,4 @@
-/*
+﻿/*
  * std_types.h
  * Describes the basic data types implemented in ARM C
  *  Created on: Mar 10, 2019
