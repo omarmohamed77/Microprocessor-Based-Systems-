@@ -2,7 +2,7 @@
 
 void delay(uint32 milliseconds)
 {
-    uint64 cycles = 16000000 * milliseconds;
-    for (uint64 i = 0; i < cycles; i++)
-        ;
+    uint32 cycles = 2000 * milliseconds;
+	uint32 i ;
+    for (i = 0; i < cycles; i++);
 }
