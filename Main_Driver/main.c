@@ -27,10 +27,10 @@ int main(void){
 	while(1){
 		data = DIO_ReadPort(PORTF_INDEX, GPIO_PF40_M);
 		if(data == GPIO_PF0_M){
-			Button_Operation_Mode(PORTF_INDEX, GPIO_PF4_M, 1);
+			Button_Operation_Mode(PORTF_INDEX, GPIO_PF4_M, Increment);
 		}
 		else if(data == GPIO_PF4_M){
-			Button_Operation_Mode(PORTF_INDEX, GPIO_PF0_M, 2);
+			Button_Operation_Mode(PORTF_INDEX, GPIO_PF0_M, Decrement);
 		}
 	}
 }
