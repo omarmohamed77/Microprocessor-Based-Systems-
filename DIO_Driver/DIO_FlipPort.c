@@ -4,9 +4,9 @@
  */
  
  
-# include "DIO_FlipPort.h"
+# include "DIO.h"
 void DIO_FlipPort (uint8 port_index, uint8 pins_mask) 
- {
+ {				
    switch(port_index)
 		{
 		   case 0:                                                                   // port A
