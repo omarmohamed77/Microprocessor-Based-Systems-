@@ -5,7 +5,7 @@
  *      Author: omar
  */
 #include "mcal.h"
-void PORT_INT(uint8 port_index)
+void Port_Init(uint8 port_index)
 { volatile uint32 delay;
 	SET_BIT(SYSCTL_RCGCGPIO_R,port_index);  /* CLOCK ENABLE */
 delay= SYSCTL_RCGCGPIO_R; /* delay */

@@ -1,5 +1,6 @@
-#include "mcal.h"
+#include "DIO.h"
 #include "LCD.h"
+#include "port.h"
 #include "delay.h"
 
 #define PORTA_INDEX					0
