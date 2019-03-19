@@ -10,6 +10,7 @@
 #define ENTRY_MODE_LEFT_TO_RIGHT 0x06 //cursor moving direction from
 #define ENABLIE_BIT	0x20 //PA5
 #define RS_BIT 0x80 //PA7
+#define PORTA 0
 
 #include "mcal.h"
 #include "delay.h"

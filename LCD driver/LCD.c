@@ -8,21 +8,22 @@ void LCD_init(uint)
 }
 void LCD_command(char command)
 {
-	GPIO_PORTA_DATA_R = 0; //command mode(RS = 0), wirte mode (RW = 0), ENABLE = 0
+	DIO_WritePort(PORTA, 0xE0, STD_LOW);//command mode(RS = 0), wirte mode (RW = 0), ENABLE = 0
 	GPIO_PORTB_DATA_R = command;
 	//Latch
-	GPIO_PORTA_DATA_R |= ENABLIE_BIT; // set Enable bit
+	DIO_WritePort(PORTA, ENABLIE_BIT, STD_HIGH);// set Enable bit
 	delay(2);
-	GPIO_PORTA_DATA_R &= (~(ENABLIE_BIT)); // clear Enable bit
+	DIO_WritePort(PORTA, ENABLIE_BIT, STD_LOW); // clear Enable bit
 	delay(2);
 }
 void LCD_data(char data)
 {
-	GPIO_PORTA_DATA_R = RS_BIT; //data mode(RS = 0), wirte mode (RW = 0), ENABLE = 0
+	DIO_WritePort(PORTA, 0x60, STD_LOW);// wirte mode (RW = 0), ENABLE = 0
+	DIO_WritePort(PORTA, RS_BIT, STD_HIGH);// data mode(RS = 0)
 	GPIO_PORTB_DATA_R = data;
 	//Latch
-	GPIO_PORTA_DATA_R |= ENABLIE_BIT; // set Enable bit
+	DIO_WritePort(PORTA, ENABLIE_BIT, STD_HIGH); // set Enable bit
 	delay(2);
-	GPIO_PORTA_DATA_R &= (~(ENABLIE_BIT)); // clear Enable bit
+	DIO_WritePort(PORTA, ENABLIE_BIT, STD_LOW); // clear Enable bit
 	delay(2);
 }
