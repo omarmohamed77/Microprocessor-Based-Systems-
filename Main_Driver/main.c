@@ -23,9 +23,7 @@ void SystemInit(void){
 int main(void){
 	uint8 Data_IN;
 	uint16 counter = 0;
-	LCD_data(48);
-	LCD_data(48);
-	LCD_data(48);
+	LCD_print(counter);
 	while(1){
 		Data_IN = DIO_ReadPort(PORTA_INDEX, PUSH_BUTTONS);
 		if(Data_IN == INC_BUTTON){
@@ -34,10 +32,7 @@ int main(void){
 			if(Data_IN == INC_BUTTON){
 				// LCD Increment
 				counter = (counter+1)%1000;
-				LCD_command(CLEAR);
-				LCD_data((uint8)((counter / 100) + 48));
-				LCD_data((uint8)(((counter%100) / 10) + 48));
-				LCD_data((uint8)((counter%10) + 48));
+				LCD_print(counter);
 				// delay(180);
 			}
 		}
@@ -47,10 +42,7 @@ int main(void){
 				// LCD Decrement
 				if(counter > 0)
 					counter--;
-				LCD_command(CLEAR);
-				LCD_data((uint8)((counter / 100) + 48));
-				LCD_data((uint8)(((counter%100) / 10) + 48));
-				LCD_data((uint8)((counter%10) + 48));
+				LCD_print(counter);
 			}
 			while(Data_IN == DEC_BUTTON){
 				Data_IN = DIO_ReadPort(PORTA_INDEX, PUSH_BUTTONS);
@@ -63,10 +55,7 @@ int main(void){
 			}		
 			// LCD Reset
 			counter = 0;
-			LCD_command(CLEAR);
-			LCD_data(counter + 48);
-			LCD_data(counter + 48);
-			LCD_data(counter + 48);
+			LCD_print(counter);
 		}
 	}
 }
