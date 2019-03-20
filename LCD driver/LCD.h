@@ -28,4 +28,10 @@ void LCD_command(char command);
    * @return void
    */
 void LCD_data(char data);
+   /**
+   * This method is used to print an integer on LCD 1602A
+   * @param counter This is the counter that will be printed on the LCD
+   * @return void
+   */
+void LCD_print(uint16 counter);
 #endif
